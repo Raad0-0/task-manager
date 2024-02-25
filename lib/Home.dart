@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/Theme/theme_provider.dart';
 import 'package:task_manager/todo.dart';
 import 'package:task_manager/todo_item.dart';
 
@@ -17,17 +19,19 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Color(0xffFAF9F6),
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: Text("Task Manager"),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.sunny_snowing),
             onPressed: () {
-              addTodoItem(todoController.text);
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
               //chap dile kisu hbe
             },
+            iconSize: 20,
+            color: Colors.white70,
           ),
         ],
       ),
